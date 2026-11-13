@@ -57,7 +57,10 @@ with mlflow.start_run():
 
     mlflow.log_artifact(__file__)
 
-    mlflow.sklearn.log_model(dt, "decision tree")
+    mlflow.sklearn.log_model(
+    sk_model=dt,
+    name="decision-tree",
+    skops_trusted_types=["sklearn.tree._tree.Tree"])
 
     mlflow.set_tag('author','nitish')
     mlflow.set_tag('model','decision tree')
